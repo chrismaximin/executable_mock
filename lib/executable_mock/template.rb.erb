@@ -1,0 +1,35 @@
+#!<%= ruby_bin %>
+
+# Mappings
+
+mappings = <%= mappings %>
+argv_key = ARGV.join(" ")
+unless mappings.key?(argv_key)
+  File.open("<%= call_error_log_file_path %>", "w") do |file|
+    file.write("The executable `<%= name %>` does not support these args:\n#{argv_key}")
+    file.write("\n\nSupported:\n<%= mappings.keys.join("\n") %>")
+  end
+  puts "ExecutableMock: Unsupported arguments"
+  exit 1
+end
+
+# Counter cache handler
+
+require "yaml"
+call_count = nil
+File.open("<%= counter_cache_path %>", "a+") do |file|
+  file.rewind
+  counter_cache = YAML.load(file.read)
+  call_count = counter_cache[argv_key]
+  counter_cache[argv_key] += 1
+  file.truncate(0)
+  file.write(counter_cache.to_yaml)
+end
+
+# Output
+
+if mappings[argv_key].is_a?(Array)
+  print mappings[argv_key].fetch(call_count)
+else
+  print mappings[argv_key]
+end
