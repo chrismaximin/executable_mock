@@ -8,6 +8,7 @@ gemspec
 
 gem "bundler"
 gem "byebug"
+gem "memory_profiler"
 gem "rake"
 gem "rspec"
 gem "rubocop", github: "rubocop-hq/rubocop"
