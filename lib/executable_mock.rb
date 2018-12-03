@@ -7,9 +7,6 @@ require "yaml"
 require "erb"
 require "executable_mock/registry"
 
-# TODO: When gemifying this, set min ruby version to 2.6
-# TODO: Use Marshal instead of YAML for perf: https://interviewbubble.com/yaml-vs-json-performance-benchmark/
-
 class ExecutableMock
   include Registry
   TEMPLATE_PATH = File.expand_path("executable_mock/template.rb.erb", __dir__)

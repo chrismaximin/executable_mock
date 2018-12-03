@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "open3"
-
 RSpec.describe ExecutableMock do
   it "sets up the correct executable" do
     docker_mappings = {
