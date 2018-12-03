@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
-require "fileutils"
-require "tempfile"
-require "tmpdir"
-require "yaml"
-require "erb"
+require "executable_mock/stdlib"
 require "executable_mock/registry"
 
 class ExecutableMock
