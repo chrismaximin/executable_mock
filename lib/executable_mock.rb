@@ -53,9 +53,7 @@ class ExecutableMock
     puts command_result if command_result
     raise
   ensure
-    FileUtils.rm(@file_path)
-    FileUtils.rm(counter_cache_path)
-    FileUtils.rm(@call_error_log_file_path)
+    FileUtils.rm_f([@file_path, @call_error_log_file_path, counter_cache_path])
     deregister_self
   end
 
