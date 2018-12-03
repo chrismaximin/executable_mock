@@ -9,7 +9,7 @@ RSpec.describe ExecutableMock do
       "container exec container-id-0 sh -c /the_command" => "command result"
     }
 
-    result = ExecutableMock.generate("docker", mappings: docker_mappings) do |mock|
+    result = ExecutableMock.generate("docker", docker_mappings) do |mock|
       run_executable(mock.path_setup)
     end
 
@@ -25,7 +25,7 @@ RSpec.describe ExecutableMock do
 
     begin
       no_output do
-        ExecutableMock.generate("docker", mappings: docker_mappings) do |mock|
+        ExecutableMock.generate("docker", docker_mappings) do |mock|
           run_executable(mock.path_setup)
         end
       end
@@ -39,7 +39,7 @@ RSpec.describe ExecutableMock do
 
     begin
       no_output do
-        ExecutableMock.generate("docker", mappings: docker_mappings) do |mock|
+        ExecutableMock.generate("docker", docker_mappings) do |mock|
           run_executable(mock.path_setup)
         end
       end
@@ -50,8 +50,8 @@ RSpec.describe ExecutableMock do
 
   context ".finalize_all" do
     it "removes the executables" do
-      docker_mock = ExecutableMock.new("docker", mappings: {})
-      gcc_mock = ExecutableMock.new("gcc", mappings: {})
+      docker_mock = ExecutableMock.new("docker", {})
+      gcc_mock = ExecutableMock.new("gcc", {})
 
       expect(File.exist?(docker_mock.file_path)).to be true
       expect(File.exist?(gcc_mock.file_path)).to be true

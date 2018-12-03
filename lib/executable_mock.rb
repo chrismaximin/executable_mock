@@ -19,8 +19,8 @@ class ExecutableMock
   attr_reader :file_path, :path_setup
 
   class << self
-    def generate(name, mappings:, ruby_bin: RbConfig.ruby, directory: Dir.mktmpdir)
-      instance = new(name, mappings: mappings, ruby_bin: ruby_bin, directory: directory)
+    def generate(name, mappings, ruby_bin: RbConfig.ruby, directory: Dir.mktmpdir)
+      instance = new(name, mappings, ruby_bin: ruby_bin, directory: directory)
 
       yield(instance).tap do |result|
         instance.finalize(result)
@@ -32,7 +32,7 @@ class ExecutableMock
     end
   end
 
-  def initialize(name, mappings:, ruby_bin: RbConfig.ruby, directory: Dir.mktmpdir)
+  def initialize(name, mappings, ruby_bin: RbConfig.ruby, directory: Dir.mktmpdir)
     @mappings = mappings
     @ruby_bin = ruby_bin
     @name = name
