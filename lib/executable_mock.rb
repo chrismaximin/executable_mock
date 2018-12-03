@@ -38,10 +38,10 @@ class ExecutableMock
   end
 
   def finalize(command_result = nil)
-    argvs_map = YAML.safe_load(File.read(counter_cache_path))
+    called_argvs_map = Marshal.load(File.read(counter_cache_path)) # rubocop:disable Security/MarshalLoad
     check_call_error_log_file
-    check_uncalled_argvs(argvs_map)
-    check_mismatched_argvs_calls(argvs_map)
+    check_uncalled_argvs(called_argvs_map)
+    check_mismatched_argvs_calls(called_argvs_map)
   rescue Error
     puts command_result if command_result
     raise
@@ -79,9 +79,9 @@ class ExecutableMock
   def counter_cache_path
     @counter_cache_path ||= begin
       Tempfile.new.path.tap do |file_path|
-        yaml_string = @mappings.transform_values { 0 }.to_yaml
+        data = Marshal.dump(@mappings.transform_values { 0 })
         File.open(file_path, "w") do |file|
-          file.write(yaml_string)
+          file.write(data)
         end
       end
     end

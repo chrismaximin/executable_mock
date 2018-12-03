@@ -17,7 +17,7 @@ puts "Ruby version: #{RUBY_VERSION}"
 end
 
 # Ruby version: 2.6.0
-# total_retained: 61
-# total_allocated: 410
-# total_retained_memsize: 7288
-# total_allocated_memsize: 50253
+# total_retained: 63
+# total_allocated: 414
+# total_retained_memsize: 7368
+# total_allocated_memsize: 50416

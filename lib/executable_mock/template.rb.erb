@@ -15,15 +15,14 @@ end
 
 # Counter cache handler
 
-require "yaml"
 call_count = nil
 File.open("<%= counter_cache_path %>", "a+") do |file|
   file.rewind
-  counter_cache = YAML.load(file.read)
+  counter_cache = Marshal.load(file.read)
   call_count = counter_cache[argv_key]
   counter_cache[argv_key] += 1
   file.truncate(0)
-  file.write(counter_cache.to_yaml)
+  file.write(Marshal.dump(counter_cache))
 end
 
 # Output

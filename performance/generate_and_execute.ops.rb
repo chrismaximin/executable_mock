@@ -26,6 +26,7 @@ puts "Realtime: #{total}"
 puts "OPS: #{(ITERATIONS / total).round}"
 
 # CPU: Intel(R) Core(TM) i7-4578U CPU @ 3.00GHz
+# Ruby version: 2.6.0
 # Iterations: 100
-# Realtime: 16.458131999708712
-# OPS: 6
+# Realtime: 9.98966099973768
+# OPS: 10
