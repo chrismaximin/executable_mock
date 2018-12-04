@@ -31,7 +31,9 @@ class ExecutableMock
     @name = name
     @file_path = File.join(directory, name)
     @path_setup = %(PATH="#{directory}:$PATH")
-    @call_error_log_file_path = Tempfile.new.path
+    call_error_log_file = Tempfile.new
+    call_error_log_file.close
+    @call_error_log_file_path = call_error_log_file.path
 
     write_executable
     register_self
@@ -78,12 +80,11 @@ class ExecutableMock
 
   def counter_cache_path
     @counter_cache_path ||= begin
-      Tempfile.new.path.tap do |file_path|
-        data = Marshal.dump(@mappings.transform_values { 0 })
-        File.open(file_path, "w") do |file|
-          file.write(data)
-        end
-      end
+      data = Marshal.dump(@mappings.transform_values { 0 })
+      Tempfile.new.tap do |file|
+        file.write(data)
+        file.close
+      end.path
     end
   end
 

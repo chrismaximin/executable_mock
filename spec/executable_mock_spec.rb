@@ -63,20 +63,19 @@ RSpec.describe ExecutableMock do
 end
 
 def run_executable(path_setup)
-  executable_path = Tempfile.new.path
-  File.open(executable_path, "w") do |file|
-    file.write(<<~SHELL)
-      #!/bin/bash
-      set -e
-      cid=$(docker run -d ruby:0.0)
-      echo -n $(docker container exec $cid sh -c /the_command)
-    SHELL
-  end
-  File.chmod(0o755, executable_path)
+  executable_file = Tempfile.new
+  executable_file.write(<<~SHELL)
+    #!/bin/bash
+    set -e
+    cid=$(docker run -d ruby:0.0)
+    echo -n $(docker container exec $cid sh -c /the_command)
+  SHELL
+  executable_file.close
+  File.chmod(0o755, executable_file.path)
 
-  `#{path_setup} #{executable_path}`
+  `#{path_setup} #{executable_file.path}`
 ensure
-  FileUtils.rm(executable_path)
+  FileUtils.rm(executable_file.path)
 end
 
 def no_output

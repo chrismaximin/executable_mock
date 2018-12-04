@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   end
 
   spec.require_paths = ["lib"]
-  spec.required_ruby_version = ">= 2.6"
+  spec.required_ruby_version = ">= 2.5"
 end

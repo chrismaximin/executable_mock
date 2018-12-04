@@ -1,0 +1,17 @@
+---
+version: 1
+
+images:
+  - ruby:2.5
+  - ruby:2.6-rc
+
+stages:
+  base:
+    - cd /app && bundle
+
+volumes:
+  - .:/app
+
+command: |
+  cd /app &&
+  bundle e rspec
