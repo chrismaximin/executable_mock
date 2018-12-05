@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Christophe Maximin"]
   spec.email = ["christophe.maximin@gmail.com"]
 
-  spec.summary = "PLACEHOLDER"
-  spec.description = "PLACEHOLDER"
+  spec.summary = "Generate executable with predefined inputs/outputs"
+  spec.description = spec.summary
   spec.homepage = "https://github.com/christophemaximin/executable_mock"
 
   spec.metadata["homepage_uri"] = spec.homepage

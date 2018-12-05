@@ -10,12 +10,6 @@ report = MemoryProfiler.report do
 end
 
 puts "Ruby version: #{RUBY_VERSION}"
-%i[total_retained total_allocated total_retained_memsize total_allocated_memsize].each do |key|
+%i[total_allocated total_allocated_memsize total_retained total_retained_memsize].each do |key|
   puts "#{key}: #{report.send(key)}"
 end
-
-# Ruby version: 2.6.0
-# total_retained: 450
-# total_allocated: 2802
-# total_retained_memsize: 55064
-# total_allocated_memsize: 245390
