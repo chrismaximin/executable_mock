@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = spec.homepage
-  spec.metadata["changelog_uri"] = "https://github.com/christophemaximin/executable_mock/CHANGELOG.md"
+  spec.metadata["changelog_uri"] = "https://github.com/christophemaximin/executable_mock/blob/master/CHANGELOG.md"
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(lib)/}) }
