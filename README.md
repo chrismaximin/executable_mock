@@ -90,4 +90,4 @@ Ruby >= 2.5
 
 ## Copyright
 
-Copyright (c) 2018 Christophe Maximin. This software is released under the [MIT License](LICENSE.txt).
+Copyright (c) 2018-2019 Christophe Maximin. This software is released under the [MIT License](LICENSE.txt).
