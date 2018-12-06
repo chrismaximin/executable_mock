@@ -5,17 +5,17 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/95d351d4ba7400934b1b/maintainability)](https://codeclimate.com/github/christophemaximin/executable_mock/maintainability)
 
 **ExecutableMock** helps you quickly and easily generate mock executables, with a predefined list of inputs -> outputs.  
-It is fast, lightweight, threadsafe, and has **zero external dependencies**. See [Performance](#performance) section for more details.  
+It is fast, lightweight, threadsafe, and has **zero external dependencies**. See the [Performance](#performance) section for more details.  
 
 You can typically use it to test an executable which is in turn calling another executable whose behaviour you want to mock.
 
 ## Installation
 
 ```sh
-$ gem install rubocop
+$ gem install executable_mock
 ```
 
-If you'd rather install it using `bundler`:  
+If you'd rather install it using `bundler`, in your `Gemfile`:  
 
 ```rb
 gem "executable_mock"
@@ -33,7 +33,7 @@ echo "The latest released version of Ruby is ${version}"
 
 However you don't actually want to run the real `docker` executable every time this script runs in your tests.
 
-Example of a test (RSpec style here, but it is compatible with anything as it is just pure ruby):
+Example of a test (RSpec style here, but it is compatible with anything as it is just pure Ruby):
 
 ```ruby
 mappings = {
@@ -72,8 +72,8 @@ Data gathered for Ruby 2.5.3 on a MacBook Pro with Intel(R) Core(TM) i7-4578U CP
 
 ### Memory usage
 
-ExecutableMock requires some ruby Standard libraries (e.g. fileutils, set).
-It wouldn't be realistic or fair to only measure memory allocations from "nothing", because most environments this gem is used in (e.g. rails, rspec) already require those standard libraries, so we're measuring here "Naked Ruby" and "Realistic Ruby" (with those libs already required).
+ExecutableMock requires some Ruby Standard libraries (e.g. fileutils, set).
+It wouldn't be realistic or fair to only measure memory allocations from "nothing", because most environments this gem is used in (e.g. Rails, RSpec) already require those standard libraries, so we're measuring here "Naked Ruby" and "Realistic Ruby" (with those libs already required).
 
 
 | Ruby version| Require script | Total allocated | Total retained |
@@ -90,4 +90,4 @@ Ruby >= 2.5
 
 ## Copyright
 
-Copyright (c) 2018 Christophe Maximin. See [LICENSE.txt](LICENSE.txt) for further details.
+Copyright (c) 2018 Christophe Maximin. This software is released under the [MIT License](LICENSE.txt).
