@@ -9,6 +9,7 @@ Gem::Specification.new do |spec|
   spec.version = ExecutableMock::VERSION
   spec.authors = ["Christophe Maximin"]
   spec.email = ["christophe.maximin@gmail.com"]
+  spec.licenses = ['MIT']
 
   spec.summary = "Generate executable with predefined inputs/outputs"
   spec.description = spec.summary
